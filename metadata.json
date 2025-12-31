@@ -1,0 +1,5 @@
+{
+  "name": "KPT Attendance Pro",
+  "description": "A comprehensive attendance management system for KPT Mangalore featuring role-based access, departmental segregation, and automated reporting.",
+  "requestFramePermissions": []
+}
