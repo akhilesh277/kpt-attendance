@@ -1,6 +1,4 @@
-
 import React, { useMemo } from 'react';
-// Added missing BookOpen icon import
 import { Users, UserMinus, UserCheck, AlertTriangle, FileBarChart, ShieldAlert, Calendar, MapPin, ArrowRight, BookOpen } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import StatCard from '../components/StatCard';
@@ -60,6 +58,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
 
   return (
     <div className="space-y-8">
+      {/* Header with Institution Name */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-[0.2em]">
@@ -69,7 +68,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
           <p className="text-slate-500 dark:text-slate-400 font-medium">Welcome back, {user.name} 👋</p>
         </div>
         <div className="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
-          <Calendar className="text-indigo-600" size={24} />
+          <Calendar className="text-indigo-600 dark:text-indigo-400" size={24} />
           <div>
             <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none">Today's Date</p>
             <p className="text-lg font-bold text-slate-900 dark:text-white mt-1">{today.toDateString()}</p>
@@ -77,6 +76,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
         </div>
       </div>
 
+      {/* Special Faculty Action Card */}
       {user.role === Role.FACULTY && (
         <div className="grid grid-cols-1 gap-6">
           <button 
@@ -95,6 +95,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
             <div className="relative z-10 p-4 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
               <ArrowRight size={32} />
             </div>
+            {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl" />
           </button>
         </div>

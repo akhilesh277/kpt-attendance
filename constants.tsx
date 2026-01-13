@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { LayoutDashboard, Users, UserCheck, BookOpen, FileBarChart, Settings, ShieldAlert, GraduationCap, FastForward, Info, Phone } from 'lucide-react';
+import { LayoutDashboard, Users, UserCheck, BookOpen, FileBarChart, Settings, ShieldAlert, GraduationCap, FastForward, Phone } from 'lucide-react';
 import { Branch, Role, Semester } from './types';
 
 export const BRANCHES = Object.values(Branch);

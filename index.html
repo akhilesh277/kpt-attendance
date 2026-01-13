@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,12 +14,29 @@
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
             },
-          },
-        },
+            animation: {
+              'shake': 'shake 0.2s ease-in-out 0s 2',
+            },
+            keyframes: {
+              shake: {
+                '0%, 100%': { transform: 'translateX(0)' },
+                '25%': { transform: 'translateX(-4px)' },
+                '75%': { transform: 'translateX(4px)' },
+              }
+            }
+          }
+        }
       }
     </script>
-    <style type="text/css">
-      /* Custom Scrollbar - Preserved Exactly */
+    <style type="text/tailwindcss">
+      @layer base {
+        html {
+          @apply transition-colors duration-300;
+        }
+        body {
+          @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased min-h-screen;
+        }
+      }
       ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
@@ -34,38 +51,25 @@
       .dark ::-webkit-scrollbar-thumb {
         background: #4b5563;
       }
-
-      /* Smooth transitions for theme switching - Preserved Exactly */
-      * {
-        transition-property: background-color, border-color, color, fill, stroke;
-        transition-duration: 200ms;
-      }
-      
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-4px); }
-        75% { transform: translateX(4px); }
-      }
-      .animate-shake {
-        animation: shake 0.2s ease-in-out 0s 2;
-      }
     </style>
     <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.462.0",
+    "recharts": "https://esm.sh/recharts@2.13.3",
+    "mongodb": "https://esm.sh/mongodb@6.10.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "recharts": "https://esm.sh/recharts@^3.6.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "mongodb": "https://esm.sh/mongodb@^7.0.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
     "vite": "https://esm.sh/vite@^7.3.1",
     "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
-  <body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+  <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-indigo-100 selection:text-indigo-600">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
