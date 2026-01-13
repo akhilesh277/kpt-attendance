@@ -1,6 +1,7 @@
 
 import React, { useMemo } from 'react';
-import { Users, UserMinus, UserCheck, AlertTriangle, FileBarChart, ShieldAlert, Calendar, MapPin, ArrowRight } from 'lucide-react';
+// Added missing BookOpen icon import
+import { Users, UserMinus, UserCheck, AlertTriangle, FileBarChart, ShieldAlert, Calendar, MapPin, ArrowRight, BookOpen } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import StatCard from '../components/StatCard';
 import { db } from '../services/db';
@@ -38,7 +39,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
 
     let defaultersCount = 0;
     studentAttendanceMap.forEach(val => {
-      if ((val.p / val.total) < 0.75) defaultersCount++;
+      if (val.total > 0 && (val.p / val.total) < 0.75) defaultersCount++;
     });
 
     return {
@@ -59,25 +60,23 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
 
   return (
     <div className="space-y-8">
-      {/* Header with Institution Name */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-[0.2em]">
             <MapPin size={14} /> Karnataka, Mangalore
           </div>
           <h1 className="text-3xl font-black text-slate-900 dark:text-white">KPT Mangalore</h1>
-          <p className="text-slate-500 font-medium">Welcome back, {user.name} 👋</p>
+          <p className="text-slate-500 dark:text-slate-400 font-medium">Welcome back, {user.name} 👋</p>
         </div>
         <div className="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
           <Calendar className="text-indigo-600" size={24} />
           <div>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Today's Date</p>
+            <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none">Today's Date</p>
             <p className="text-lg font-bold text-slate-900 dark:text-white mt-1">{today.toDateString()}</p>
           </div>
         </div>
       </div>
 
-      {/* Special Faculty Action Card */}
       {user.role === Role.FACULTY && (
         <div className="grid grid-cols-1 gap-6">
           <button 
@@ -96,7 +95,6 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
             <div className="relative z-10 p-4 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
               <ArrowRight size={32} />
             </div>
-            {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl" />
           </button>
         </div>
@@ -151,11 +149,11 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onNavigate }) => {
               </div>
               <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Reports</span>
             </button>
-            <button onClick={() => onNavigate?.('students')} className="flex flex-col items-center justify-center p-6 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-200 dark:hover:border-blue-800 transition-all group">
+            <button onClick={() => onNavigate?.('resources')} className="flex flex-col items-center justify-center p-6 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-200 dark:hover:border-blue-800 transition-all group">
               <div className="p-4 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-2xl mb-3 group-hover:scale-110 transition-transform">
-                <Users size={28} />
+                <BookOpen size={28} />
               </div>
-              <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Directory</span>
+              <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Resources</span>
             </button>
             <button onClick={() => onNavigate?.('settings')} className="flex flex-col items-center justify-center p-6 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:border-amber-200 dark:hover:border-amber-800 transition-all group">
               <div className="p-4 bg-amber-100 dark:bg-amber-900 text-amber-600 dark:text-amber-400 rounded-2xl mb-3 group-hover:scale-110 transition-transform">

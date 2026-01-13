@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { LayoutDashboard, Users, UserCheck, BookOpen, FileBarChart, Settings, ShieldAlert, GraduationCap, FastForward } from 'lucide-react';
+import { LayoutDashboard, Users, UserCheck, BookOpen, FileBarChart, Settings, ShieldAlert, GraduationCap, FastForward, Info, Phone } from 'lucide-react';
 import { Branch, Role, Semester } from './types';
 
 export const BRANCHES = Object.values(Branch);
@@ -13,6 +13,8 @@ export const NAV_ITEMS = [
   { id: 'faculty', label: 'Faculty', icon: <Users size={20} />, roles: [Role.SUPER_ADMIN, Role.PRINCIPAL, Role.HOD] },
   { id: 'promotion', label: 'Promotion', icon: <FastForward size={20} />, roles: [Role.SUPER_ADMIN, Role.PRINCIPAL] },
   { id: 'reports', label: 'Reports', icon: <FileBarChart size={20} />, roles: [Role.SUPER_ADMIN, Role.PRINCIPAL, Role.HOD] },
+  { id: 'resources', label: 'Resources', icon: <BookOpen size={20} />, roles: [Role.SUPER_ADMIN, Role.PRINCIPAL, Role.HOD, Role.FACULTY] },
+  { id: 'contact', label: 'Contact', icon: <Phone size={20} />, roles: [Role.SUPER_ADMIN, Role.PRINCIPAL, Role.HOD, Role.FACULTY] },
   { id: 'settings', label: 'Settings', icon: <Settings size={20} />, roles: [Role.SUPER_ADMIN, Role.PRINCIPAL, Role.HOD, Role.FACULTY] },
 ];
 
